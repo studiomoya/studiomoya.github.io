@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studio Moya - Inteligência e Arquitetura de Marcas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --navy: #1a2332;
+            --wine: #6b2d3c;
+            --off-white: #f8f6f4;
+            --gold-accent: #d4af37;
+            --text-dark: #2c2c2c;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--off-white);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--navy) 0%, #2a3649 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(107, 45, 60, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(212, 175, 55, 0.05) 0%, transparent 50%);
+            animation: breathe 8s ease-in-out infinite;
+        }
+
+        @keyframes breathe {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--off-white);
+            margin-bottom: 1rem;
+            letter-spacing: 0.1em;
+            position: relative;
+            z-index: 1;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-headline {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--off-white);
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+            animation: fadeIn 1.2s ease-out 0.3s backwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .hero-subheadline {
+            font-size: 1.2rem;
+            font-weight: 300;
+            color: var(--off-white);
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+            animation: fadeIn 1.4s ease-out 0.6s backwards;
+        }
+
+        .cta-primary {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: var(--wine);
+            color: var(--off-white);
+            text-decoration: none;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            border: 2px solid var(--wine);
+            transition: all 0.4s ease;
+            position: relative;
+            z-index: 1;
+            animation: fadeIn 1.6s ease-out 0.9s backwards;
+            overflow: hidden;
+        }
+
+        .cta-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: left 0.4s ease;
+        }
+
+        .cta-primary:hover::before {
+            left: 100%;
+        }
+
+        .cta-primary:hover {
+            background: transparent;
+            border-color: var(--off-white);
+            transform: translateY(-2px);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--off-white);
+            opacity: 0.6;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translate(-50%, 0); }
+            50% { transform: translate(-50%, 10px); }
+        }
+
+        /* Problem Section */
+        .problem-section {
+            padding: 6rem 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .problem-section p {
+            font-size: 1.3rem;
+            line-height: 2;
+            font-weight: 300;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .problem-section .emphasis {
+            font-weight: 600;
+            color: var(--wine);
+        }
+
+        /* Services Section */
+        .services-section {
+            background: var(--navy);
+            padding: 6rem 2rem;
+            position: relative;
+        }
+
+        .services-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: linear-gradient(to bottom, var(--off-white), transparent);
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            text-align: center;
+            color: var(--off-white);
+            margin-bottom: 4rem;
+            font-weight: 400;
+        }
+
+        .services-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 0 2rem;
+        }
+
+        .service-card {
+            background: rgba(248, 246, 244, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(248, 246, 244, 0.1);
+            padding: 2.5rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--wine);
+            transform: scaleY(0);
+            transition: transform 0.4s ease;
+        }
+
+        .service-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .service-card:hover {
+            background: rgba(248, 246, 244, 0.08);
+            transform: translateY(-5px);
+            border-color: rgba(248, 246, 244, 0.2);
+        }
+
+        .service-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--gold-accent);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .service-tagline {
+            font-size: 0.95rem;
+            color: rgba(248, 246, 244, 0.7);
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-description {
+            font-size: 0.95rem;
+            color: var(--off-white);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .service-cta {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: transparent;
+            color: var(--off-white);
+            text-decoration: none;
+            border: 1px solid rgba(248, 246, 244, 0.3);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            letter-spacing: 0.05em;
+        }
+
+        .service-cta:hover {
+            background: var(--wine);
+            border-color: var(--wine);
+            transform: translateX(5px);
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 6rem 2rem;
+            background: var(--off-white);
+        }
+
+        .about-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            width: 100%;
+            aspect-ratio: 3/4;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--wine) 100%);
+            border: 3px solid var(--wine);
+            position: relative;
+        }
+
+        .about-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--navy);
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+
+        .about-content p {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+
+        .about-signature {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--wine);
+            margin-top: 2rem;
+            font-style: italic;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--navy);
+            padding: 3rem 2rem 2rem;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-links a {
+            color: var(--off-white);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            transition: color 0.3s ease;
+            padding: 0.5rem 1rem;
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--gold-accent);
+            border-color: var(--gold-accent);
+        }
+
+        .footer-note {
+            color: rgba(248, 246, 244, 0.5);
+            font-size: 0.85rem;
+            margin-top: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-headline {
+                font-size: 2rem;
+            }
+
+            .hero-subheadline {
+                font-size: 1rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                padding: 0 1rem;
+            }
+
+            .about-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .about-image {
+                max-width: 300px;
+                margin: 0 auto;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .social-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="logo">STUDIO MOYA</div>
+        <h1 class="hero-headline">A competência não precisa gritar</h1>
+        <p class="hero-subheadline">Transformamos negócios em marcas premium através de silêncio estratégico e estrutura sólida</p>
+        <a href="https://wa.me/5521965603181?text=Ol%C3%A1!%20Quero%20agendar%20uma%20conversa%20estrat%C3%A9gica%20sobre%20minha%20marca" class="cta-primary">Agende uma Conversa Estratégica</a>
+        <div class="scroll-indicator">↓</div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="problem-section">
+        <p>Enquanto o mercado foca em táticas barulhentas e exaustivas para o algoritmo, <span class="emphasis">a Studio Moya foca em silêncio estratégico, processos validados e construção de autoridade real.</span></p>
+        <p>O que separa um negócio comum de uma marca premium não é o barulho que ela faz, mas <span class="emphasis">a solidez da sua estrutura e a intencionalidade da sua imagem.</span></p>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section">
+        <h2 class="section-title">O Ecossistema de Serviços</h2>
+        <div class="services-grid">
+            <!-- A ÓRBITA -->
+            <div class="service-card">
+                <div class="service-name">A ÓRBITA</div>
+                <div class="service-tagline">O Calendário</div>
+                <p class="service-description">O direcionamento tático de conteúdo. Para a empreendedora que precisa de clareza imediata para postar e quer acabar com o improviso e o bloqueio criativo.</p>
+                <a href="https://wa.me/5521965603181?text=Ol%C3%A1!%20Preciso%20organizar%20minha%20rotina%20de%20conte%C3%BAdo%20e%20quero%20conhecer%20A%20%C3%93RBITA" class="service-cta">Organize sua rotina de conteúdo →</a>
+            </div>
+
+            <!-- A MIRA -->
+            <div class="service-card">
+                <div class="service-name">A MIRA</div>
+                <div class="service-tagline">O Plano</div>
+                <p class="service-description">O plano de ação estratégico para execução solo. Para quem tem braço para executar a própria comunicação, mas precisa da rota e das táticas validadas para não perder tempo atirando no escuro.</p>
+                <a href="https://wa.me/5521965603181?text=Ol%C3%A1!%20Preciso%20de%20um%20plano%20de%20a%C3%A7%C3%A3o%20claro%20e%20quero%20conhecer%20A%20MIRA" class="service-cta">Tenha um plano de ação claro →</a>
+            </div>
+
+            <!-- A JEM -->
+            <div class="service-card">
+                <div class="service-name">A JEM</div>
+                <div class="service-tagline">O Visual</div>
+                <p class="service-description">A lapidação estética. Para negócios cuja imagem atual não reflete o alto valor do que entregam. É a criação de uma identidade visual magnética e templates intencionais.</p>
+                <a href="https://wa.me/5521965603181?text=Ol%C3%A1!%20Quero%20elevar%20o%20padr%C3%A3o%20visual%20da%20minha%20marca%20e%20conhecer%20A%20JEM" class="service-cta">Eleve o padrão visual da sua marca →</a>
+            </div>
+
+            <!-- A KARTA -->
+            <div class="service-card">
+                <div class="service-name">A KARTA</div>
+                <div class="service-tagline">A Consultoria</div>
+                <p class="service-description">A estratégia guiada e o mapa direcional do negócio. Para quem precisa desenhar a arquitetura da sua autoridade a quatro mãos. Definição profunda de público, tom de voz e posicionamento premium.</p>
+                <a href="https://wa.me/5521965603181?text=Ol%C3%A1!%20Preciso%20descobrir%20a%20rota%20da%20minha%20marca%20e%20quero%20conhecer%20A%20KARTA" class="service-cta">Descubra a rota da sua marca →</a>
+            </div>
+
+            <!-- A NASHI -->
+            <div class="service-card">
+                <div class="service-name">A NASHI</div>
+                <div class="service-tagline">A Gestão</div>
+                <p class="service-description">A execução total e a operação diária das redes. Para a empresária que precisa retomar o controle do próprio tempo. A terceirização completa dos bastidores com método, estrutura e excelência.</p>
+                <a href="https://wa.me/5521965603181?text=Ol%C3%A1!%20Estou%20pronta%20para%20terceirizar%20minha%20gest%C3%A3o%20com%20excel%C3%AAncia%20e%20quero%20conhecer%20A%20NASHI" class="service-cta">Terceirize com excelência →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="about-container">
+            <div class="about-image"></div>
+            <div class="about-content">
+                <h2>Luciana Carvalho</h2>
+                <p>A competência não precisa gritar. Ela se sustenta em resultados.</p>
+                <p>Sou Luciana, estrategista de marcas e fundadora da Studio Moya. Aos 43 anos, trago na bagagem mais de duas décadas de experiência real estruturando negócios locais. Eu não aprendi sobre vendas e processos lendo teorias na internet; passei os últimos 20 anos no front de empresas que precisam faturar todos os dias.</p>
+                <p>Entendi que o que separa um negócio comum de uma marca premium não é o barulho que ela faz, mas a solidez da sua estrutura e a intencionalidade da sua imagem. Meu trabalho é tirar a sua marca da guerra de preços, construindo um posicionamento elegante e processos que vendem antes mesmo de você abrir a boca.</p>
+                <div class="about-signature">— Luciana Carvalho</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="social-links">
+            <a href="https://www.instagram.com/somosmoya/" target="_blank">INSTAGRAM</a>
+            <a href="https://www.linkedin.com/in/luciana-carvalho-3a4140247/" target="_blank">LINKEDIN</a>
+            <a href="https://wa.me/5521965603181?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20quero%20saber%20mais%20sobre%20a%20Studio%20Moya">WHATSAPP</a>
+        </div>
+        <p class="footer-note">© 2025 Studio Moya - Inteligência e Arquitetura de Marcas</p>
+    </footer>
+</body>
+</html>
